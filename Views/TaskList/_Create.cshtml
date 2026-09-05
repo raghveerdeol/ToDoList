@@ -1,26 +1,23 @@
-@model ToDoList.Models.TaskList
-@{
-    ViewData["Title"] = "Create";
-}
 
 <div class="flex flex-center text-center">
-    <h1 class="col-12">To DO List</h1>
+    <h4 class="col-12">Create Task</h4>
     <div class="col-6">
         <form asp-action="Create" method="post">
             <div>
                 <div>
                     <label for="Title">Title</label>
-                    <input type="text" name="Title" asp-for="Title">
+                    <input type="text" name="Title">
                 </div>
                 <div>
                     <label for="Description">Description</label>
-                    <input type="text" name="Description" asp-for="Description">
+                    <input type="text" name="Description">
                 </div>
                 <div>
                     <label for="Important">Important</label>
-                    <input type="checkbox" name="Important" asp-for="Important">
+                    <input type="checkbox" name="Important" value="true">
                 </div>
-                <button type="submit">Save</button>
+                <button type="submit" class="btn-base btn-success">Save</button>
+                <button type="submit" class="btn-base btn-danger">Cancel</button>
             </div>
         </form>
     </div>

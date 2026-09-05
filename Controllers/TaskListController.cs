@@ -1,8 +1,9 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ToDoList.Models;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using ToDoList.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace ToDoList.Controllers;
 
@@ -25,7 +26,7 @@ public class TaskListController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        return View();
+        return PartialView();
     }
     //funzione per action creazione
     [HttpPost]
@@ -45,7 +46,7 @@ public class TaskListController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        return View(taskList);
+        return RedirectToAction("Index");
     }
 
     //funzione rotta

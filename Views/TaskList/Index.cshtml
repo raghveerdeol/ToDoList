@@ -3,15 +3,23 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="flex flex-center text-center">
+<div class="flex flex-center text-center mt-8">
     <h1 class="col-12">To DO List</h1>
     <div class="col-8 mt-8">
-        <a type="button" class="btn-base btn-success" href="/TaskList/Create">Add Task</a>
-        <ul>
+        <div class="flex flex-end col-12">
+            <button 
+                type="button" 
+                class="btn-base btn-success px-2 py-1" 
+                onclick="openCreateModal()" 
+            >
+                Add Task
+            </button>    
+        </div>
+        <ul class="mt-8 no-list-style">
             @foreach (var SingleTask in Model)
             {
                 <li>
-                    <div class="flex flex-center text-start mt-8 col-12 item-border p-list-item bg-grey">
+                    <div class="flex flex-center text-start mt-2 col-12 item-border p-list-item bg-grey">
                         <div class="col-8">
                             <div class="mr-4">
                                 @* <form action="Complete" method="post">
@@ -61,6 +69,9 @@
             }
         </ul>
     </div>
+    <dialog id="modalCreate">
+        <partial name="_Create">
+    </dialog>
     <dialog id="modalEdit">
         <partial name="_Edit">
     </dialog>
@@ -70,6 +81,7 @@
 </div>
 
 @section Scripts {
+    <script src="~/js/createModal.js" asp-append-version="true"></script>
     <script src="~/js/editModal.js" asp-append-version="true"></script>
     <script src="~/js/deleteModal.js" asp-append-version="true"></script>
 }
