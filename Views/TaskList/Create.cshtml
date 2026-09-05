@@ -1,0 +1,27 @@
+@model ToDoList.Models.TaskList
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="flex flex-center text-center">
+    <h1 class="col-12">To DO List</h1>
+    <div class="col-6">
+        <form asp-action="Create" method="post">
+            <div>
+                <div>
+                    <label for="Title">Title</label>
+                    <input type="text" name="Title" asp-for="Title">
+                </div>
+                <div>
+                    <label for="Description">Description</label>
+                    <input type="text" name="Description" asp-for="Description">
+                </div>
+                <div>
+                    <label for="Important">Important</label>
+                    <input type="radio" value="false" name="Important" asp-for="Important">
+                </div>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

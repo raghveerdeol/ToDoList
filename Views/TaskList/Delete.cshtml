@@ -1,0 +1,22 @@
+@model ToDoList.Models.TaskList
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="flex flex-center text-center">
+    <h1 class="col-12">To DO List</h1>
+    <div class="col-12">
+        <h3>Do you want to delete the task "@Model.Title"?</h3>
+    </div>
+    <div class="col-6 flex">
+        <div class="col-6">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <button asp-action="Index">Cancel</button>
+        </div>
+    </div>
+</div>

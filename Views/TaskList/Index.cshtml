@@ -1,0 +1,42 @@
+@model IEnumerable<ToDoList.Models.TaskList>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="flex flex-center text-center">
+    <h1 class="col-12">To DO List</h1>
+    <div class="col-6">
+        <a href="/TaskList/Create">Add Task</a>
+        @foreach (var item in Model)
+        {
+            <div class="flex flex-center text-start mt-8 col-12">
+                <div class="col-6">
+                    <div class="mr-4">
+                        @* <form action="Complete" method="post">
+                            <input type="checkbox" name="completed" asp-for="Completed">
+                        </form> *@
+                    </div>
+                    <div>
+                        <h4>
+                            @item.Title
+                            @if(@item.Important)
+                            {
+                                <span>
+                                    &#x2606;
+                                </span>
+                            }
+                        </h4>
+                        <p>
+                            @item.Description
+                        </p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <a href="/TaskList/Edit/@item.Id">Edit</a>
+                    <a href="/TaskList/Delete/@item.Id">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

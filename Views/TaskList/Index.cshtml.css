@@ -1,0 +1,29 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+.col-6{
+    width: 12/12;
+}
+
+.col-4{
+    width: 4/12;   
+}
+.text-center{
+    text-align: center;
+}
+.text-start{
+    text-align: start;
+}
+.mt-8{
+    margin-top: 44px;
+}
+.mr-4{
+    margin-right: 22px;
+}
+
