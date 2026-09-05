@@ -8,7 +8,7 @@
     <div class="col-8 mt-8">
         <a type="button" class="btn-base btn-success" href="/TaskList/Create">Add Task</a>
         <ul>
-            @foreach (var item in Model)
+            @foreach (var SingleTask in Model)
             {
                 <li>
                     <div class="flex flex-center text-start mt-8 col-12 item-border p-list-item bg-grey">
@@ -20,8 +20,8 @@
                             </div>
                             <div>
                                 <h4>
-                                    @item.Title
-                                    @if(@item.Important)
+                                    @SingleTask.Title
+                                    @if(@SingleTask.Important)
                                     {
                                         <span class="color-yellow">
                                             &#127775;
@@ -29,18 +29,36 @@
                                     }
                                 </h4>
                                 <p>
-                                    @item.Description
+                                    @SingleTask.Description
                                 </p>
                             </div>
                         </div>
                         <div class="col-4 flex flex-end">
-                            <a type="button" href="/TaskList/Edit/@item.Id" class="btn-success btn-base mr-4">Edit</a>
-                            <a type="button" href="/TaskList/Delete/@item.Id" class="btn-danger btn-base">Delete</a>
+                            <button 
+                                type="button"
+                                class="btn-success btn-base mr-4"
+                                onclick="openEditModal(this)"
+                                data-id="@SingleTask.Id"
+                                data-title="@SingleTask.Title"
+                                data-description="@SingleTask.Description"
+                                data-important="@SingleTask.Important.ToString().ToLower()"
+                                data-completed="@SingleTask.Completed.ToString().ToLower()"
+                            >
+                                Edit
+                            </button>
+                            <a type="button" href="/TaskList/Delete/@SingleTask.Id" class="btn-danger btn-base">Delete</a>
                         </div>
                     </div>
                 </li>
             }
         </ul>
     </div>
+    <dialog id="modalEdit">
+        <partial name="_Edit">
+    </dialog>
 </div>
+
+@section Scripts {
+    <script src="~/js/editModal.js" asp-append-version="true"></script>
+}
 

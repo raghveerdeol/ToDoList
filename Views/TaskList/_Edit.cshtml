@@ -1,0 +1,31 @@
+<div class="flex flex-center text-center modal-dialog">
+    <div class="col-6 modal-content">
+        <div class="modal-body">
+            <form asp-action="Edit" method="post">
+                <div>
+                    <input type="hidden" id="edit-id" name="Id">
+                    <div>
+                        <label for="Title">Title</label>
+                        <input type="text" id="edit-title" name="Title">
+                    </div>
+                    <div>
+                        <label for="Description">Description</label>
+                        <input type="text" id="edit-description" name="Description">
+                    </div>
+                    <div>
+                        <label for="Important">Important</label>
+                        <input type="checkbox" id="edit-important" name="Important" value="true">
+                    </div>
+                    <div>
+                        <label for="Completed">Completed</label>
+                        <input type="checkbox" id="edit-completed" name="Completed" value="true">
+                    </div>
+                    <button type="submit" class="btn-base btn-success">Save</button>
+                    <button type="button" class="btn-base btn-danger" onclick="closeEditModal()" >Close</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>

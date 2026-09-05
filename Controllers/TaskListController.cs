@@ -13,6 +13,7 @@ public class TaskListController : Controller
     {
         _context = context;
     }
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         // get saved tasks
@@ -21,6 +22,7 @@ public class TaskListController : Controller
     }
 
     //funzione per creare la rotta
+    [HttpGet]
     public IActionResult Create()
     {
         return View();
@@ -47,26 +49,27 @@ public class TaskListController : Controller
     }
 
     //funzione rotta
+    [HttpGet]
     public async Task<IActionResult> Edit(int Id)
     {
         var taskList = await _context.TaskLists.FirstOrDefaultAsync(task => task.Id == Id);
-        return View(taskList);
+        return PartialView("_Edit", taskList);
     }
     //funzione modifica
     [HttpPost]
     public async Task<IActionResult> Edit(int Id, [Bind("Id,Title,Description,Important,Completed")] TaskList taskList)
     {
         // validazione dati
-        if(ModelState.IsValid)
+        if (ModelState.IsValid)
         {
             //cerco il record
             var taskToEdit = await _context.TaskLists.FirstOrDefaultAsync(task => task.Id == Id);
-            if(taskToEdit != null)
+            if (taskToEdit != null)
             {
                 //se record esiste modifico il context
                 var now = DateTime.UtcNow;
                 taskToEdit.Title = taskList.Title.Trim();
-                taskToEdit.Description = taskList.Description.Trim();
+                taskToEdit.Description = taskList.Description?.Trim();
                 taskToEdit.UpdatedAt = now;
                 taskToEdit.Important = taskList.Important;
                 taskToEdit.Completed = taskList.Completed;
@@ -78,6 +81,7 @@ public class TaskListController : Controller
     }
 
     //funzione rotta elimina
+    [HttpGet]
     public async Task<IActionResult> Delete(int Id)
     {
         var taskList = await _context.TaskLists.FirstOrDefaultAsync(task => task.Id == Id);
