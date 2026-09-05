@@ -1,0 +1,15 @@
+
+<div class="flex flex-center text-center">
+    <div class="col-12">
+        <h3>Do you want to delete the task "<span id="delete-title"></span>"?</h3>
+    </div>
+    <div class="col-6 flex">
+        <div class="col-12">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" name="Id" id="delete-id">
+                <button type="submit" class="btn-base btn-danger">Delete</button>
+                <button onclick="closeDeleteModal()" class="btn-base btn-success">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -85,7 +85,7 @@ public class TaskListController : Controller
     public async Task<IActionResult> Delete(int Id)
     {
         var taskList = await _context.TaskLists.FirstOrDefaultAsync(task => task.Id == Id);
-        return View(taskList);
+        return PartialView(taskList);
     }
     [HttpPost, ActionName("Delete")]
     public async Task<IActionResult> ConfirmeDelete(int Id)
