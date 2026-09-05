@@ -5,38 +5,42 @@
 
 <div class="flex flex-center text-center">
     <h1 class="col-12">To DO List</h1>
-    <div class="col-6">
-        <a href="/TaskList/Create">Add Task</a>
-        @foreach (var item in Model)
-        {
-            <div class="flex flex-center text-start mt-8 col-12">
-                <div class="col-6">
-                    <div class="mr-4">
-                        @* <form action="Complete" method="post">
-                            <input type="checkbox" name="completed" asp-for="Completed">
-                        </form> *@
+    <div class="col-8 mt-8">
+        <a type="button" class="btn-base btn-success" href="/TaskList/Create">Add Task</a>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <div class="flex flex-center text-start mt-8 col-12 item-border p-list-item bg-grey">
+                        <div class="col-8">
+                            <div class="mr-4">
+                                @* <form action="Complete" method="post">
+                                    <input type="checkbox" name="completed" asp-for="Completed">
+                                </form> *@
+                            </div>
+                            <div>
+                                <h4>
+                                    @item.Title
+                                    @if(@item.Important)
+                                    {
+                                        <span class="color-yellow">
+                                            &#127775;
+                                        </span>
+                                    }
+                                </h4>
+                                <p>
+                                    @item.Description
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-4 flex flex-end">
+                            <a type="button" href="/TaskList/Edit/@item.Id" class="btn-success btn-base mr-4">Edit</a>
+                            <a type="button" href="/TaskList/Delete/@item.Id" class="btn-danger btn-base">Delete</a>
+                        </div>
                     </div>
-                    <div>
-                        <h4>
-                            @item.Title
-                            @if(@item.Important)
-                            {
-                                <span>
-                                    &#x2606;
-                                </span>
-                            }
-                        </h4>
-                        <p>
-                            @item.Description
-                        </p>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <a href="/TaskList/Edit/@item.Id">Edit</a>
-                    <a href="/TaskList/Delete/@item.Id">Delete</a>
-                </div>
-            </div>
-        }
+                </li>
+            }
+        </ul>
     </div>
 </div>
 

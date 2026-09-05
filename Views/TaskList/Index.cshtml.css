@@ -7,10 +7,15 @@
     justify-content: center;
     align-items: center;
 }
+.flex-end{
+    justify-content: end;
+}
+.col-8{
+    width: 8/12;
+}
 .col-6{
     width: 12/12;
 }
-
 .col-4{
     width: 4/12;   
 }
@@ -25,5 +30,37 @@
 }
 .mr-4{
     margin-right: 22px;
+}
+.p-list-item{
+    padding: 12px 18px ;
+}
+.item-border{
+    border: 2px;
+    border-style: solid;
+    border-color: blue;
+    border-radius: .6rem;
+}
+
+.btn-base{
+    text-decoration: none;
+    color: white;
+    padding: 6px 12px;
+    border-style: none;
+    border-radius: .6rem;
+}
+
+.btn-danger{
+    background-color: indianred;
+    }
+
+.btn-success{
+    background-color: darkseagreen;
+}
+.color-yellow{
+    color: yellow;
+    fill: yellow;
+}
+.bg-grey{
+    background-color: #e3f3f3;
 }
 
