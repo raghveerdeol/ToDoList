@@ -94,10 +94,11 @@ body {
 .item-border{
     border: 2px;
     border-style: solid;
-    border-color: blue;
     border-radius: .6rem;
 }
-
+.border-base-c{
+    border-color: blue;
+}
 .btn-base{
     text-decoration: none;
     color: white;
@@ -119,8 +120,21 @@ body {
     fill: yellow;
 }
 .bg-grey{
-    background-color: #e3f3f3;
+    background-color: #f3d1d2;
 }
 .no-list-style{
     list-style: none;
+}
+.task-completed{
+  text-decoration: line-through;
+}
+.bg-completed{
+    background-color: #e3f3f3;
+
+} 
+.border-completed{
+    border-color: greenyellow;
+}
+.color-blue{
+  color: blue;
 }

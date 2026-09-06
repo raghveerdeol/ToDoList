@@ -19,15 +19,18 @@
             @foreach (var SingleTask in Model)
             {
                 <li>
-                    <div class="flex flex-center text-start mt-2 col-12 item-border p-list-item bg-grey">
+                    <div class="flex flex-center text-start mt-2 col-12 p-list-item item-border @CompletedTask(@SingleTask.Completed, true)">
                         <div class="col-8">
-                            <div class="mr-4">
-                                @* <form action="Complete" method="post">
-                                    <input type="checkbox" name="completed" asp-for="Completed">
-                                </form> *@
-                            </div>
+                            @if(!@SingleTask.Completed){
+                                <div class="mr-4">
+                                    <form asp-action="CheckComplete" method="post">
+                                        <input type="hidden" name="Id" asp-for="@SingleTask.Id">
+                                            <Button type="submit" class="btn-base btn-base-p item-border border-base-c color-blue">Complete Task</Button>
+                                    </form>
+                                </div>
+                            }
                             <div>
-                                <h4>
+                                <h4 class="@CompletedTask(@SingleTask.Completed, false)">
                                     @SingleTask.Title
                                     @if(@SingleTask.Important)
                                     {
@@ -36,7 +39,7 @@
                                         </span>
                                     }
                                 </h4>
-                                <p>
+                                <p class="@CompletedTask(@SingleTask.Completed, false)">
                                     @SingleTask.Description
                                 </p>
                             </div>
@@ -79,6 +82,16 @@
         <partial name="_Delete">
     </dialog>
 </div>
+
+@functions{
+    public string CompletedTask(bool Completed, bool Container){
+        if(Container){
+            return Completed ? "bg-completed border-completed" : " bg-grey border-base-c";
+        } else {
+            return Completed ? "task-completed" : "";
+        }
+    }
+}
 
 @section Scripts {
     <script src="~/js/createModal.js" asp-append-version="true"></script>

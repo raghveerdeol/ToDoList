@@ -103,17 +103,23 @@ public class TaskListController : Controller
 
         return RedirectToAction("Index");
     }
-    // public async IActionResult Complete(int Id)
-    // {
-    //     //search the task
-    //     var task = _context.
-    //     //pass the task to next method
-    // }
-    // [HttpPost]
-    // public IActionResult Complete(TaskList task)
-    // {
-    //     //check task completed
 
-    //     //redirect to Index
-    // }
+    [HttpPost, ActionName("CheckComplete")]
+    public async Task<IActionResult> CheckComplete(int Id)
+    {
+        if (ModelState.IsValid)
+        {
+            var taskToComplete = await _context.TaskLists.FirstOrDefaultAsync(t => t.Id == Id);
+            if (taskToComplete != null)
+            {
+                var now = DateTime.UtcNow;
+                //inverto - se è true metto false e viceversa
+                taskToComplete.Completed = taskToComplete.Completed ? false : true;
+                taskToComplete.UpdatedAt = now;
+                await _context.SaveChangesAsync();
+            }
+        }
+        return RedirectToAction("Index");
+    }
 }
+
