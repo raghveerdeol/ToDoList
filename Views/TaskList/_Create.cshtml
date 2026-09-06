@@ -1,24 +1,28 @@
 
-<div class="flex flex-center text-center">
-    <h4 class="col-12">Create Task</h4>
-    <div class="col-6">
-        <form asp-action="Create" method="post">
-            <div>
+<div>
+    <div class="flex flex-end">
+        <button type="button" class="btn-base btn-danger btn-base-p text-end" onclick="closeCreateModal()">X</button>
+    </div>
+    <div class="flex flex-center text-center">
+        <h4 class="col-12">Create Task</h4>
+        <div class="col-12 mt-8">
+            <form asp-action="Create" method="post">
                 <div>
-                    <label for="Title">Title</label>
-                    <input type="text" name="Title">
+                    <div class="mt-1 flex space-between">
+                        <label for="Title">Title</label>
+                        <input type="text" name="Title">
+                    </div>
+                    <div class="mt-1 flex space-between">
+                        <label for="Description">Description</label>
+                        <input type="text" name="Description">
+                    </div>
+                    <div class="mt-1 flex space-between">
+                        <label for="Important">Important</label>
+                        <input type="checkbox" name="Important" value="true">
+                    </div>
+                    <button type="submit" class="btn-base btn-success btn-base-p mt-8">Save</button>
                 </div>
-                <div>
-                    <label for="Description">Description</label>
-                    <input type="text" name="Description">
-                </div>
-                <div>
-                    <label for="Important">Important</label>
-                    <input type="checkbox" name="Important" value="true">
-                </div>
-                <button type="submit" class="btn-base btn-success">Save</button>
-            </div>
-        </form>
-        <button type="button" class="btn-base btn-danger" onclick="closeCreateModal()">Cancel</button>
+            </form>
+        </div>
     </div>
 </div>

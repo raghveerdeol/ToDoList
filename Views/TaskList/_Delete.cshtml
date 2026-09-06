@@ -4,12 +4,12 @@
         <h3>Do you want to delete the task "<span id="delete-title"></span>"?</h3>
     </div>
     <div class="col-6 flex">
-        <div class="col-12">
-            <form asp-action="Delete" method="post">
+        <div class="col-12 flex space-between">
+            <form asp-action="Delete" method="post" class="col-4 btn-danger btn-base btn-base-p">
                 <input type="hidden" name="Id" id="delete-id">
-                <button type="submit" class="btn-base btn-danger">Delete</button>
+                <button type="submit" class="btn-danger btn-base">Delete</button>
             </form>
-            <button type="button" onclick="closeDeleteModal()" class="btn-base btn-success">Cancel</button>
+            <button type="button" onclick="closeDeleteModal()" class="btn-success btn-base btn-base-p col-4">Cancel</button>
         </div>
     </div>
 </div>

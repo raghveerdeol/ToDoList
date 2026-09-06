@@ -4,6 +4,7 @@ function openDeleteModal(deleteButton) {
     const id = deleteButton.getAttribute('data-id');
     const title = document.createElement("em");
     title.textContent = deleteButton.getAttribute('data-title');
+    title.id = 'title-child';
 
     //put the data in the modal
     document.getElementById('delete-id').value = id;
@@ -15,5 +16,7 @@ function openDeleteModal(deleteButton) {
 //cancel delete
 function closeDeleteModal()
 {
+    const childNode = document.getElementById('title-child');
+    document.getElementById('delete-title').removeChild(childNode);
     document.getElementById('modalDelete').close()
 }
